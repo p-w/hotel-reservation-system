@@ -4,6 +4,7 @@ import com.mstftrgt.hotelreservationsystem.dto.AuthResponse;
 import com.mstftrgt.hotelreservationsystem.exception.AuthenticationException;
 import com.mstftrgt.hotelreservationsystem.dto.LoginRequest;
 import com.mstftrgt.hotelreservationsystem.dto.RegisterRequest;
+import com.mstftrgt.hotelreservationsystem.dto.RoleDto;
 import com.mstftrgt.hotelreservationsystem.entity.User;
 import com.mstftrgt.hotelreservationsystem.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,7 @@ public class AuthService {
                 .id(UUID.randomUUID())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole())
+                .role(RoleDto.USER)
                 .build();
 
         userRepository.save(user);
